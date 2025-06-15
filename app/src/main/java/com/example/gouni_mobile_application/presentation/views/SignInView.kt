@@ -43,7 +43,7 @@ fun SignInView(viewModel: SignInViewModel = viewModel(), navController: NavContr
 
     LaunchedEffect(isLoggedIn) {
         if (isLoggedIn) {
-            navController.navigate("createRoute") {
+            navController.navigate("myRoutes") {
                 popUpTo("signin") { inclusive = true }
             }
         }
