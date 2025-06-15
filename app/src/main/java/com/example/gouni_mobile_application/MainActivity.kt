@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.gouni_mobile_application.presentation.views.CreateRouteView
 import com.example.gouni_mobile_application.presentation.views.SignInView
 import com.example.gouni_mobile_application.presentation.views.SignUpView
+import com.example.gouni_mobile_application.presentation.views.RoutesListView
 import com.example.gouni_mobile_application.ui.theme.GoUniMobileApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,6 +48,9 @@ class MainActivity : ComponentActivity() {
             }
             composable("createRoute") {
                 CreateRouteView()
+            }
+            composable("routesList") {
+                RoutesListView(navController = navController)
             }
             composable("signup") {
                 SignUpView()
