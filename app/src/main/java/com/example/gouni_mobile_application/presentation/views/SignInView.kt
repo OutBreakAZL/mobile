@@ -32,7 +32,7 @@ import androidx.navigation.NavController
 import com.example.gouni_mobile_application.R
 import com.example.gouni_mobile_application.presentation.viewmodels.SignInViewModel
 
-//@Preview(showBackground = true)
+
 @Composable
 fun SignInView(viewModel: SignInViewModel = viewModel(), navController: NavController,) {
     val email by viewModel.email.collectAsState()

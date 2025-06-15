@@ -39,13 +39,13 @@ class MainActivity : ComponentActivity() {
                 SignInView(navController = navController)
             }
             composable("createRoute") {
-                CreateRouteView()
+                CreateRouteView(navController = navController)
             }
             composable("myRoutes") {
-                MyRoutesView()
+                MyRoutesView(navController = navController)
             }
             composable("signup") {
-                SignUpView()
+                SignUpView(navController = navController)
             }
         }
     }

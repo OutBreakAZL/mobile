@@ -18,15 +18,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.gouni_mobile_application.domain.models.Route
 import com.example.gouni_mobile_application.presentation.viewmodels.MyRoutesViewModel
 import java.time.DayOfWeek
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-@Preview(showBackground = true)
 @Composable
-fun MyRoutesView(viewModel: MyRoutesViewModel = viewModel()) {
+fun MyRoutesView(
+    navController: NavController? = null,
+    viewModel: MyRoutesViewModel = viewModel()
+) {
     val routes by viewModel.routes.collectAsState()
 
     LaunchedEffect(Unit) {
@@ -71,7 +74,9 @@ fun MyRoutesView(viewModel: MyRoutesViewModel = viewModel()) {
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
-                        onClick = { viewModel.onCreateNewRoute() },
+                        onClick = {
+                            navController?.navigate("createRoute")
+                        },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF4CAF50)
                         )
@@ -96,7 +101,9 @@ fun MyRoutesView(viewModel: MyRoutesViewModel = viewModel()) {
                 // Add new route button at the bottom
                 item {
                     Button(
-                        onClick = { viewModel.onCreateNewRoute() },
+                        onClick = {
+                            navController?.navigate("createRoute")
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(56.dp),
@@ -228,4 +235,11 @@ private fun formatDays(days: List<DayOfWeek>): String {
 
     return days.sortedBy { it.value }
         .joinToString(", ") { dayMap[it] ?: it.name }
+}
+
+// Preview function for testing
+@Preview(showBackground = true)
+@Composable
+fun MyRoutesViewPreview() {
+    MyRoutesView()
 }
